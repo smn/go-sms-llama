@@ -2,7 +2,7 @@
   "url": "http://foo/",
   "method": "POST",
   "content_type": "application/json; charset=utf-8",
-  "data": "{\"keyword\":\"foo\"}",
+  "data": "{\"content\":\"foo\"}",
   "body": {
     "content": "http://foo/ said foo!"
   }

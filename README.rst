@@ -1,21 +1,37 @@
-Go JSBox Skeleton
-=================
+Go SMS Llama
+============
 
-Skeleton repository for Vumi Go JSBox applications.
-Use this as a starting point app development.
+Llama @vumigo jsbox app for @arbitraryuser.
+
+1. Accept SMS assume it has a keyword.
+2. Post to URL as JSON
+3. Read JSON response from URL, send reply.
+
+Payloads
+~~~~~~~~
+
+From Vumi to URL::
+
+    {
+        "keyword": "foo"
+    }
+
+In URL response::
+
+    {
+        "content": "Hi there!"
+    }
+
+
+Install & Test
+~~~~~~~~~~~~~~
 
 ::
 
     $ npm install .
     $ ./node_modules/.bin/mocha -R spec
 
-Documentation also available for Vumi Go's JSBox `state machine`_ and
-the various resources_ available for the application to interact with.
-
-
 |travis|_
 
-.. |travis| image:: https://travis-ci.org/smn/go-jsbox-skeleton.png?branch=develop
-.. _travis: https://travis-ci.org/smn/go-jsbox-skeleton
-.. _state machine: http://vumi-jssandbox-toolkit.readthedocs.org/en/latest/
-.. _resources: https://vumi-go.readthedocs.org/en/latest/sandbox-resources.html
+.. |travis| image:: https://travis-ci.org/smn/go-sms-llama.png?branch=develop
+.. _travis: https://travis-ci.org/smn/go-sms-llama
