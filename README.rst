@@ -1,7 +1,7 @@
 Go SMS Llama
 ============
 
-Llama `Vumi Go <https://vumi.org/>`_ jsbox app for `arbitraryuser <https://github.com/arbitraryuser>`_.
+Llama `Vumi Go <https://vumi.org/>`_ jsbox app for `@arbitraryuser <https://github.com/jonathanendersby>`_.
 
 1. Accept SMS assume it has a keyword.
 2. Post to URL as JSON
