@@ -7,20 +7,20 @@ var assert = require("assert");
 var app = require("../lib/application");
 var vumigo = require("vumigo_v01");
 
-describe('Application', function () {
+describe('SMS Llama', function () {
 
   var tester;
-  var fixtures = [];
+  var fixtures = [
+    'test/fixtures/foo_url.json'
+  ];
 
-  describe('when using the app', function() {
+  describe('when receiving an SMS', function() {
 
     beforeEach(function () {
       tester = new vumigo.test_utils.ImTester(app.api, {
         custom_setup: function (api) {
           api.config_store.config = JSON.stringify({
-              /*
-              config: ["values", "here"]
-              */
+              url: 'http://foo/'
           });
 
           fixtures.forEach(function (f) {
@@ -31,37 +31,14 @@ describe('Application', function () {
       });
     });
 
-    it('should show the opening menu', function (done) {
+    it('should post to the configured URL.', function (done) {
       tester.check_state({
         user: null,
-        content: null,
-        next_state: 'start',
-        response: /Hi there! What do you want to do\?\n1. Show this menu again.\n2. Exit/
+        content: 'foo',
+        next_state: 'keyword',
+        response: 'http://foo/ said foo!',
+        continue_session: false
       }).then(done, done);
     });
-
-    it('should return to the opening menu', function (done) {
-      tester.check_state({
-        user: {
-          current_state: 'start'
-        },
-        content: '1',
-        next_state: 'start',
-        response: /Hi there! What do you want to do\?\n1. Show this menu again.\n2. Exit/
-      }).then(done, done);
-    });
-
-    it('should go to the end menu', function (done) {
-      tester.check_state({
-        user: {
-          current_state: 'start'
-        },
-        content: '2',
-        next_state: 'end',
-        response: /Thanks, cheers!/,
-        continue_session: false  // we expect the session to end here
-      }).then(done, done);
-    });
-
   });
 });
