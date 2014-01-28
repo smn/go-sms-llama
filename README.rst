@@ -13,6 +13,7 @@ Payloads
 From Vumi to URL::
 
     {
+        "msisdn": "+1234567"
         "keyword": "foo"
     }
 
